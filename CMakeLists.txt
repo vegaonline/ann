@@ -30,8 +30,10 @@ include_directories(${ann_SOURCE_DIR}/src)
 
 #set(LIBS ${ROOT_LIBRARY_DIR}//libCore.so ${ROOT_LIBRARY_DIR}/libRIO.so ${ROOT_LIBRARY_DIR}/libGeom.so ${ROOT_LIBRARY_DIR}/libGraf.so ${ROOT_LIBRARY_DIR}/libGpad.so ${ROOT_LIBRARY_DIR}/libHist.so ${ROOT_LIBRARY_DIR}/libEG.so ${ROOT_LIBRARY_DIR}/libPhysics.so ${ROOT_LIBRARY_DIR}/libMathMore.so ${ROOT_LIBRARY_DIR}/libTree.so)
 
-set (exec_INCS  ${ann_SOURCE_DIR}/include/base.h ${ann_SOURCE_DIR}/include/neuron.h )
-set (exec_SRCS ${ann_SOURCE_DIR}/src/neuron.cpp)
+
+# set (LIBS )
+set (exec_INCS  ${ann_SOURCE_DIR}/include/base.h ${ann_SOURCE_DIR}/include/neuron.h ${ann_SOURCE_DIR}/include/network.h)
+set (exec_SRCS ${ann_SOURCE_DIR}/src/neuron.cpp ${ann_SOURCE_DIR}/src/network.cpp)
 
 add_executable(ann.e ${exec_INCS}  ${exec_SRCS})
-# target_link_libraries(ann.e ${LIBS})
+target_link_libraries(ann.e m)

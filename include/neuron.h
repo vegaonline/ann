@@ -35,7 +35,7 @@ inline void ANLink::set_weight(float weight)
 
 class neuron {
     friend class network;
-
+ public:
     enum FUNCTION { LINEAR, SIGMOID };
 
     neuron();

@@ -1,5 +1,5 @@
-#ifndef NETWORK_H
-#define NETWORK_H
+#ifndef network_h
+#define network_h
 
 class neuron;
 
@@ -23,7 +23,7 @@ inline int NLayer::get_neurons_number() const {
   return m_neurons_number;
 }
 
-inline neuron* NLayer::get_neurons(int i) const {
+inline neuron* NLayer::get_neuron(int i) const {
   if (i > get_neurons_number() - 1|| i < 0) 
     return 0;
   return neurons[i];
@@ -34,7 +34,7 @@ inline neuron* NLayer::get_neurons(int i) const {
 class network {
  public:
   network(int layers_number, int *neurons_per_layer);    //  number of layers and neurons per layer
-  network(const wchar_t* fname);                         // custom config from the file
+  network(const char* fname);                         // custom config from the file
   ~network();
 
   void init_links(const float* avec = 0, const float* mvec = 0, int ifunc = 0, int hfunc = 1);
@@ -46,7 +46,7 @@ class network {
   // run network with in vector[ivec] return in[ovec] network out
   void classify(const float* ivec, float* ovec);
 
-  bool save(const wchar_t* fname) const;
+  bool save(const char* fname) const;
 
   inline int status() const;
   inline int get_layers_number() const;
@@ -57,7 +57,7 @@ class network {
   int m_layers_number;             // number of layers in network
   std::vector<NLayer*>layers;      // vector of layer
 
-  float m_rule;      //learning rule---> 0.2
+  float m_nrule;      //learning rule---> 0.2
   float m_alpha;     // momentum 0.7
 
   void backprop_run(const float* dsrdvec);       
@@ -78,7 +78,7 @@ inline NLayer* network::get_layer(int i) const {
   return layers[i];
 }
 
-#endif NETWORK_H
+#endif network_h
 
 /*
 network
